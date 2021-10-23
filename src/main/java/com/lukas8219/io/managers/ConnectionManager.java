@@ -45,10 +45,9 @@ public class ConnectionManager {
             CONNECTION = DriverManager.getConnection(DATABASE_URL,
                     DATABASE_USERNAME,
                     DATABASE_PASSWORD);
-
             log.debug("Connection successfully created");
         } catch (SQLException e) {
-            throw new RuntimeException("An exception occurred when trying to stablish a SQL connection", e);
+            throw new RuntimeException("Unable to connect to Database", e);
         }
     }
 

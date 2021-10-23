@@ -15,16 +15,16 @@ public class ServerManager {
     private static final Logger log = LoggerFactory.getLogger(ServerManager.class);
 
     static {
+        ConnectionManager.createConnection();
+    }
+
+    static {
         try {
             SERVER = HttpServer.create(new InetSocketAddress("localhost", SERVER_PORT), 0);
             log.info("Server started on port {} successfully", SERVER_PORT);
         } catch (IOException e) {
             throw new RuntimeException("An error occurred when trying to start application");
         }
-    }
-
-    static {
-        ConnectionManager.createConnection();
     }
 
     private ServerManager() {
