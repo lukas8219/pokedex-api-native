@@ -13,7 +13,6 @@ public class ServerManager {
     static {
         try {
             SERVER = HttpServer.create(new InetSocketAddress("localhost", SERVER_PORT), 0);
-            //TODO externalize port
         } catch (IOException e) {
             throw new RuntimeException("An error occurred when trying to start application");
         }
@@ -24,6 +23,10 @@ public class ServerManager {
     }
 
     private ServerManager(){}
+
+    public static HttpServer startServer(){
+        return SERVER;
+    }
 
     public static HttpServer getServer(){
         return SERVER;

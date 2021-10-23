@@ -15,7 +15,7 @@ public class PokedexDAO {
         var connection = ConnectionManager.getConnection();
         try {
             var statement = connection.createStatement();
-            var query = String.format("SELECT * FROM pokemons WHERE id = %d", id);
+            var query = String.format("SELECT * FROM pokedex.pokemons WHERE id = %d", id);
             log.debug("Executing query {}", query);
             var resultSet = statement.executeQuery(query);
             resultSet.next();

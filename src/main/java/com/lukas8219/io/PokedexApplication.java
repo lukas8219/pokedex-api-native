@@ -12,7 +12,7 @@ public class PokedexApplication {
 
     public static void main(String[] args) {
         //TODO add function run all scripts and populate DB.
-        var server = ServerManager.getServer();
+        var server = ServerManager.startServer();
         ContextManager.createContext("/pokedex", new PokedexHandler());
         server.start();
         log.info("Application started successfully!");

@@ -9,7 +9,7 @@ import com.sun.net.httpserver.HttpHandler;
 public class ContextManager {
 
     public static HttpContext createContext(String endpoint, HttpHandler handler){
-        var ctx = ServerManager.getServer().createContext(endpoint, handler);
+        var ctx = ServerManager.startServer().createContext(endpoint, handler);
         applyFilters(ctx);
         return ctx;
     }
