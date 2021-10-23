@@ -1,7 +1,7 @@
 package com.lukas8219.io.dao;
 
 import com.lukas8219.io.dto.PokemonDTO;
-import com.lukas8219.io.jdbc.ConnectionManager;
+import com.lukas8219.io.managers.ConnectionManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

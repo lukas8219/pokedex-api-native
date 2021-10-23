@@ -9,6 +9,10 @@ public class HeaderUtils {
     private static final String APPLICATION_JSON = "application/json";
 
     public static void addDefaultHeaders(Headers headers){
+        addRestHeaders(headers);
+    }
+
+    public static void addRestHeaders(Headers headers){
         headers.add(CONTENT_TYPE, APPLICATION_JSON);
     }
 

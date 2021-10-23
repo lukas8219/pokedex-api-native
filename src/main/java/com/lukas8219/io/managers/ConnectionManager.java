@@ -1,5 +1,6 @@
-package com.lukas8219.io.jdbc;
+package com.lukas8219.io.managers;
 
+import com.lukas8219.io.config.ConfigurationUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,10 +10,12 @@ import java.sql.SQLException;
 
 public class ConnectionManager {
 
-    private final static String DATABASE_URL = "jdbc:mysql://localhost:3306/pokedex";
-    private final static String DATABASE_USERNAME = "root";
-    private final static String DATABASE_PASSWORD = "12345678@";
     private final static Logger log = LoggerFactory.getLogger(ConnectionManager.class);
+    private final static String DATABASE_URL = ConfigurationUtils.getConfiguration("DATABASE_URL");
+    private final static String DATABASE_USERNAME = ConfigurationUtils.getConfiguration("DATABASE_USERNAME");
+    private final static String DATABASE_PASSWORD = ConfigurationUtils.getConfiguration("DATABASE_PASSWORD");
+
+    private static Connection CONNECTION;
 
     static {
         try {
@@ -21,8 +24,6 @@ public class ConnectionManager {
             log.error("An error occurred when trying to load Driver!");
         }
     }
-
-    private static Connection CONNECTION;
 
     public static Connection getConnection() {
         if (CONNECTION == null || connectionIsClosed()) {
@@ -34,12 +35,12 @@ public class ConnectionManager {
     private static boolean connectionIsClosed() {
         try {
             return CONNECTION != null && CONNECTION.isClosed();
-        } catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException("An error occurred when trying to check if connection is closed", e);
         }
     }
 
-    public static void createConnection(){
+    public static void createConnection() {
         try {
             CONNECTION = DriverManager.getConnection(DATABASE_URL,
                     DATABASE_USERNAME,

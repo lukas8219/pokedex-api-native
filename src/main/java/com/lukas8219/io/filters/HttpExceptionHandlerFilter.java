@@ -6,7 +6,7 @@ import com.sun.net.httpserver.HttpExchange;
 
 import java.io.IOException;
 
-public class ExceptionHandlerFilter extends Filter {
+public class HttpExceptionHandlerFilter extends Filter {
     @Override
     public void doFilter(HttpExchange httpExchange, Chain chain) throws IOException {
         try {

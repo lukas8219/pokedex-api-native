@@ -1,6 +1,6 @@
 package com.lukas8219.io.filters;
 
-import com.lukas8219.io.jdbc.ConnectionManager;
+import com.lukas8219.io.managers.ConnectionManager;
 import com.sun.net.httpserver.Filter;
 import com.sun.net.httpserver.HttpExchange;
 import org.slf4j.Logger;

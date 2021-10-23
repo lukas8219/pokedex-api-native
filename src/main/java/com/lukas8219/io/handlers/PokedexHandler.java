@@ -12,7 +12,7 @@ import java.nio.charset.StandardCharsets;
 
 import static com.lukas8219.io.constants.RequestMethods.GET;
 
-public class EndpointHandler implements HttpHandler {
+public class PokedexHandler implements HttpHandler {
 
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
@@ -20,7 +20,7 @@ public class EndpointHandler implements HttpHandler {
             var response = httpExchange.getResponseBody();
             var pokemonId = parseHttpRequest(httpExchange);
             var pokemon = PokedexDAO.getById(pokemonId);
-            var json = new ObjectMapper().writeValueAsString(pokemon);
+            var json = new ObjectMapper().writeValueAsString(pokemon); //TODO move objectMapper to util class
             HeaderUtils.addDefaultHeaders(httpExchange);
             httpExchange.sendResponseHeaders(200, json.length());
             response.write(json.getBytes(StandardCharsets.UTF_8));
