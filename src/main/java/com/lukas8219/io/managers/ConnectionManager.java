@@ -1,6 +1,7 @@
 package com.lukas8219.io.managers;
 
 import com.lukas8219.io.config.ConfigurationUtils;
+import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,6 +23,18 @@ public class ConnectionManager {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             log.error("An error occurred when trying to load Driver!");
+        }
+    }
+
+    public static String getSelectedDatabase(){
+        try {
+            if(CONNECTION == null){
+                createConnection();
+            }
+            return CONNECTION.getCatalog();
+        } catch (SQLException e) {
+            log.error("An exception occurred when retrieving schema name");
+            return null;
         }
     }
 

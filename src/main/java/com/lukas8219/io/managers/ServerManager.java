@@ -16,6 +16,7 @@ public class ServerManager {
 
     static {
         ConnectionManager.createConnection();
+        MigrationManager.init();
     }
 
     static {
